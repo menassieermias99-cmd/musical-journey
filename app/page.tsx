@@ -75,26 +75,32 @@ export default function Home() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex flex-col h-screen bg-slate-500 text-slate-100 font-sans">
       {/* Top Header Bar */}
-      <header className="h-14">
-        <div className="flex">
+      <header className="h-14 boder-b border-slate-800 bg-slate-900 px-6 flex items-center justify-between">
+        <div className="flex items-center gap-3">
           <Terminal className="h-5 w-5 text-indigo-400" />
-          <span className="font-bold text-sm tracking-wide">
+          <span className="font-bold text-sm tracking-wide text-slate-100">
             DEV SNIPPET HUB
           </span>
         </div>
 
-        <div className="flex">
+        <div className="flex items-center gap-4">
           {userEmail ? (
-            <div className="flex">
-              <span className="text-xs">Signed in</span>
-              <button className="flex">
-                <LogOut className="h-3.5" /> Sign Out
+            <div className="flex items-center gap-3">
+              <span className="text-xs text-slate-400">Signed in</span>
+              <button
+                onClick={handleLogout}
+                className="flex items-center gap-1.5 text-xs text-slate-300 hover:text-rose-400 transition-colors"
+              >
+                <LogOut className="h-3.5 w-3.5 " /> Sign Out
               </button>
             </div>
           ) : (
-            <button>
+            <button
+              onClick={() => setIsAuthOpen(true)}
+              className="flex items-center gap-1.5 px-3 py-1.5 bg-indigo-600 hover:bg-indigo-500 text-white rounded-lg text-xs font-semibold transition-colors"
+            >
               <LogIn className="w-3.5 h-3.5" /> Sign In
             </button>
           )}
@@ -102,7 +108,7 @@ export default function Home() {
       </header>
 
       {/* Main Split Pane Workspace */}
-      <div className="flex-1">
+      <div className="flex-1 flex overflow-hidden">
         <Sidebar
           collections={collections}
           snippets={snippets}
