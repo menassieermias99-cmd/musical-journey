@@ -71,7 +71,10 @@ export default function SnippetViewer({
               <div className="flex items-center gap-1.5">
                 <Tag className="h-3.5 w-3.5 text-slate-500" />
                 {tagList.map((tag, idx) => (
-                  <span className="bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded text-[11px]">
+                  <span
+                    key={idx}
+                    className="bg-slate-800 text-slate-300 px-1.5 py-0.5 rounded text-[11px]"
+                  >
                     #{tag}
                   </span>
                 ))}
